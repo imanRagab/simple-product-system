@@ -12,4 +12,8 @@ module.exports.connect = function(){
     });
 }
 
+// db disconnect
+module.exports.disconnect = function (){
+    mongoose.disconnect();
+}
 
