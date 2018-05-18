@@ -7,6 +7,7 @@ var logger = require('morgan');
 require('dotenv').config()
 var db = require('../config/db');
 var articlesRouter = require('./routes/api/articles')
+var productsRouter = require('./routes/api/products')
 
 // connect to database
 var mongoose = db.connect();
@@ -28,6 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // api routes
 app.use('/api/articles', articlesRouter)
+app.use('/api/products', productsRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -44,9 +46,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-// api routes
-app.use('/api/articles', articlesRouter)
-
 
 module.exports = app;
