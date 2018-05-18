@@ -6,3 +6,5 @@ var articlesController = require('../../controllers/api/articlesController')
 router.get('/', articlesController.listArticles);
 
 module.exports = router;
+
+
