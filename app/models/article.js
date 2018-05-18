@@ -5,16 +5,19 @@ var Schema = mongoose.Schema;
 var articleSchema = new Schema({
 
     no: {
-        type: Number
+        type: Number,
+        required: true
     },
 
     name: {
-        type: String
+        type: String,
+        required: true
     },
 
     type: {
         type: String,
-        enum: ['Raw Material', 'Semi Processed']
+        enum: ['Raw Material', 'Semi Processed'],
+        required: true
       }
 });
 
