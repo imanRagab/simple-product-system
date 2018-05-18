@@ -8,6 +8,9 @@ router.get('/', productsController.listProducts);
 /* POST product create. */
 router.post('/', productsController.createProduct);
 
+/* PUT article update. */
+router.put('/:id', productsController.updateProduct);
+
 module.exports = router;
 
 
