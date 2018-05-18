@@ -36,4 +36,14 @@ exports.updateArticle = function (req, res) {
   });
 }
 
+// delete article
+
+exports.deleteArticle = function (req, res) { 
+
+  Article.findByIdAndRemove(req.params.id, function (err, article) {
+    if (err) return res.status(500).send("There was a problem deleting the article.");
+    res.status(200).send("Article "+ article.name +" was deleted.");
+  });
+}
+
 
