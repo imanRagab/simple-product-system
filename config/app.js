@@ -3,11 +3,13 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+require('dotenv').config()
 var db = require('./db');
 
 // connect to database
 var mongoose = db.connect();
 
+// instantiate express app
 var app = express();
 
 // view engine setup
