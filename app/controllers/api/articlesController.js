@@ -9,7 +9,7 @@ exports.listArticles = function(req, res) {
     }
     res.json(articles);
   });
-};
+}
 
 // create article
 
