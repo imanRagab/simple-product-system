@@ -17,4 +17,5 @@ module.exports.disconnect = function (){
     mongoose.disconnect();
 }
 
-
+// handle process terminations
+process.on('SIGINT', this.disconnect);
