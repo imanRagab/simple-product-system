@@ -19,3 +19,6 @@ module.exports.disconnect = function (){
 
 // handle process terminations
 process.on('SIGINT', this.disconnect);
+
+// export mongoose 
+module.exports.mongoose = mongoose;
