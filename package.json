@@ -12,5 +12,8 @@
   },
   "author": "",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/iman-ragab/simple-product-system#readme"
+  "homepage": "https://bitbucket.org/iman-ragab/simple-product-system#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
 }
