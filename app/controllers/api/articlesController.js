@@ -21,7 +21,7 @@ exports.createArticle = function(req, res) {
     type : req.body.type
   }, 
   function (err, article) {
-      if (err) return res.status(500).send("There was a problem adding the information to the database.");
+      if (err) return res.status(500).send("There was a problem adding the information to the database. Error: " + err);
       res.status(200).send(article);
   });
 }
@@ -31,7 +31,7 @@ exports.createArticle = function(req, res) {
 exports.updateArticle = function (req, res) {
     
   Article.findByIdAndUpdate(req.params.id, req.body, {new: true}, function (err, article) {
-      if (err) return res.status(500).send("There was a problem updating the article.");
+      if (err) return res.status(500).send("There was a problem updating the article. Error: " + err);
       res.status(200).send(article);
   });
 }
@@ -41,7 +41,7 @@ exports.updateArticle = function (req, res) {
 exports.deleteArticle = function (req, res) { 
 
   Article.findByIdAndRemove(req.params.id, function (err, article) {
-    if (err) return res.status(500).send("There was a problem deleting the article.");
+    if (err) return res.status(500).send("There was a problem deleting the article. Error: " + err);
     res.status(200).send("Article "+ article.name +" was deleted.");
   });
 }
