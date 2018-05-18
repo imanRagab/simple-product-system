@@ -11,6 +11,9 @@ router.post('/', articlesController.createArticle);
 /* PUT article update. */
 router.put('/:id', articlesController.updateArticle);
 
+/* DELETE article delete. */
+router.delete('/:id', articlesController.deleteArticle);
+
 module.exports = router;
 
 
