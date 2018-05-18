@@ -21,7 +21,7 @@ exports.createProduct = function(req, res) {
     article : req.body.article
   }, 
   function (err, product) {
-      if (err) return res.status(500).send("There was a problem adding the information to the database.");
+      if (err) return res.status(500).send("There was a problem adding the information to the database. Error: " + err);
       res.status(200).send(product);
   });
 }
@@ -31,7 +31,7 @@ exports.createProduct = function(req, res) {
 exports.updateProduct = function (req, res) {
     
   Product.findByIdAndUpdate(req.params.id, req.body, {new: true}, function (err, product) {
-      if (err) return res.status(500).send("There was a problem updating the product.");
+      if (err) return res.status(500).send("There was a problem updating the product. Error: " + err);
       res.status(200).send(product);
   });
 }
@@ -41,7 +41,7 @@ exports.updateProduct = function (req, res) {
 exports.deleteProduct = function (req, res) { 
 
   Product.findByIdAndRemove(req.params.id, function (err, product) {
-    if (err) return res.status(500).send("There was a problem deleting the product.");
+    if (err) return res.status(500).send("There was a problem deleting the product. Error: " + err);
     res.status(200).send("Product "+ product.name +" was deleted.");
   });
 }
