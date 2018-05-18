@@ -31,7 +31,17 @@ exports.createProduct = function(req, res) {
 exports.updateProduct = function (req, res) {
     
   Product.findByIdAndUpdate(req.params.id, req.body, {new: true}, function (err, product) {
-      if (err) return res.status(500).send("There was a problem updating the article.");
+      if (err) return res.status(500).send("There was a problem updating the product.");
       res.status(200).send(product);
+  });
+}
+
+// delete product
+
+exports.deleteProduct = function (req, res) { 
+
+  Product.findByIdAndRemove(req.params.id, function (err, product) {
+    if (err) return res.status(500).send("There was a problem deleting the product.");
+    res.status(200).send("Product "+ product.name +" was deleted.");
   });
 }
