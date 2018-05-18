@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-var app = require('./config/app');
+var app = require('./app/app');
 var debug = require('debug')('zappy:server');
 var http = require('http');
 
