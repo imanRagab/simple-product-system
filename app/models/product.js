@@ -5,16 +5,19 @@ var Schema = mongoose.Schema;
 var productSchema = new Schema({
 
     no: {
-        type: Number
+        type: Number,
+        required: true
     },
 
     name: {
-        type: String
+        type: String,
+        required: true
     },
 
     article: {
         type: Schema.Types.ObjectId, 
-        ref: 'Article'
+        ref: 'Article',
+        required: true
     }
 });
 
