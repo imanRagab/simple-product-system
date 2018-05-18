@@ -25,3 +25,13 @@ exports.createProduct = function(req, res) {
       res.status(200).send(product);
   });
 }
+
+// update product
+
+exports.updateProduct = function (req, res) {
+    
+  Product.findByIdAndUpdate(req.params.id, req.body, {new: true}, function (err, product) {
+      if (err) return res.status(500).send("There was a problem updating the article.");
+      res.status(200).send(product);
+  });
+}
