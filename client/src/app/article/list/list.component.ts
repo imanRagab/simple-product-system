@@ -43,7 +43,9 @@ export class ListComponent implements OnInit {
 
   deleteArticle(id: number): void {
 
-    const endPoint = '${this.articlesUrl}/${id}';
+    const endPoint = `${this.articlesUrl}/${id}`;
+
+    console.log(endPoint);
 
     this.api.delete(endPoint).subscribe(
       res => {
