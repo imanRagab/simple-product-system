@@ -5,6 +5,9 @@ var productsController = require('../../controllers/api/productsController')
 /* GET products listing. */
 router.get('/', productsController.listProducts);
 
+/* GET product show. */
+router.get('/:id', productsController.showProduct);
+
 /* POST product create. */
 router.post('/', productsController.createProduct);
 

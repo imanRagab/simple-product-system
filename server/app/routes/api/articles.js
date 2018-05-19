@@ -5,6 +5,9 @@ var articlesController = require('../../controllers/api/articlesController')
 /* GET articles listing. */
 router.get('/', articlesController.listArticles);
 
+/* GET article show. */
+router.get('/:id', articlesController.showArticle);
+
 /* GET articles products. */
 router.get('/:id/products', articlesController.listProducts);
 
