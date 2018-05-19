@@ -1,4 +1,5 @@
 var Article = require('../../models/article');
+var Product = require('../../models/product');
 
 // list all articles
 
@@ -40,9 +41,17 @@ exports.updateArticle = function (req, res) {
 
 exports.deleteArticle = function (req, res) { 
 
-  Article.findByIdAndRemove(req.params.id, function (err, article) {
-    if (err) return res.status(500).send("There was a problem deleting the article. Error: " + err);
-    res.status(200).send("Article "+ article.name +" was deleted.");
+  // test if articale has assigned products
+  Product.find({ article: req.params.id }, function(err, products){
+
+    if (err) return res.status(500).send(err);
+
+    if (products.length) return res.status(500).send("Article have assigned products");
+
+    Article.findByIdAndRemove(req.params.id, function (err, article) {
+      if (err) return res.status(500).send("There was a problem deleting the article. Error: " + err);
+      res.status(200).send("Article "+ article.name +" was deleted.");
+    });
   });
 }
 
