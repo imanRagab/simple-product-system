@@ -5,6 +5,9 @@ var articlesController = require('../../controllers/api/articlesController')
 /* GET articles listing. */
 router.get('/', articlesController.listArticles);
 
+/* GET articles products. */
+router.get('/:id/products', articlesController.listProducts);
+
 /* POST article create. */
 router.post('/', articlesController.createArticle);
 
