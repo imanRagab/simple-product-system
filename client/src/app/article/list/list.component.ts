@@ -10,6 +10,7 @@ import {Observable} from 'rxjs';
 export class ListComponent implements OnInit {
 
   articles: Array<object>;
+  articlesUrl = '/api/articles';
   constructor(
     private api: ApiService
   ) {
@@ -25,7 +26,7 @@ export class ListComponent implements OnInit {
 
   getArticles(): void {
 
-    const endPoint = '/api/articles';
+    const endPoint = this.articlesUrl;
 
     this.api.get(endPoint).subscribe(
       res => {
@@ -34,6 +35,22 @@ export class ListComponent implements OnInit {
       },
       err => {
         console.log(err);
+      }
+    );
+  }
+
+  // delete article
+
+  deleteArticle(id: number): void {
+
+    const endPoint = '${this.articlesUrl}/${id}';
+
+    this.api.delete(endPoint).subscribe(
+      res => {
+        console.log(res);
+      },
+      error => {
+        console.log(error);
       }
     );
   }
