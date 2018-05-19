@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm, NgModel } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create',
@@ -11,7 +12,8 @@ export class CreateComponent implements OnInit {
 
   articleForm: object;
   constructor(
-    private api: ApiService
+    private api: ApiService,
+    private router: Router
   ) {
     this.articleForm = {};
    }
@@ -32,6 +34,8 @@ export class CreateComponent implements OnInit {
         console.log(error);
       }
     );
+    window.location.reload();
+    this.router.navigate(['articles']);
   }
 
 }
