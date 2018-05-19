@@ -30,7 +30,7 @@ export class ApiService {
 
   post(endPoint: string, data: object): Observable<any> {
 
-    return this.http.post(this.apiUrl, data, this.httpOptions);
+    return this.http.post(this.apiUrl + endPoint, data, this.httpOptions);
   }
 
 }
