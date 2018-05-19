@@ -12,6 +12,20 @@ exports.listArticles = function(req, res) {
   });
 }
 
+// show article
+
+exports.showArticle = function (req, res) { 
+
+    Article.findById( req.params.id, function (err, article) { 
+
+        if(err){
+          res.send(err);
+        }
+        res.json(article);
+     });
+
+ }
+
 // list article products
 
 exports.listProducts = function(req, res) {
