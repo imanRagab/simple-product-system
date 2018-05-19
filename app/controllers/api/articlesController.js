@@ -12,6 +12,18 @@ exports.listArticles = function(req, res) {
   });
 }
 
+// list article products
+
+exports.listProducts = function(req, res) {
+
+  Product.find({ article: req.params.id }, function(err, articles) {
+    if (err){
+      res.send(err);
+    }
+    res.json(articles);
+  });
+}
+
 // create article
 
 exports.createArticle = function(req, res) {
