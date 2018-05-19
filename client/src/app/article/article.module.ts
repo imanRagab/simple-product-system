@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ListComponent } from './list/list.component';
 import { RouterModule } from '@angular/router';
 import { CreateComponent } from './create/create.component';
+import { UpdateComponent } from './update/update.component';
 
 @NgModule({
   imports: [
@@ -14,6 +15,6 @@ import { CreateComponent } from './create/create.component';
       { path: 'articles/create', component: CreateComponent},
   ])
   ],
-  declarations: [ListComponent, CreateComponent]
+  declarations: [ListComponent, CreateComponent, UpdateComponent]
 })
 export class ArticleModule { }
