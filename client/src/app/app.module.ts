@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { ArticleModule } from './article/article.module';
 import { ProductModule } from './product/product.module';
@@ -15,6 +16,7 @@ import { ApiService } from './services/api.service';
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     ArticleModule,
     ProductModule,
     RouterModule.forRoot([])
