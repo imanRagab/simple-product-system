@@ -14,11 +14,11 @@ var productSchema = new Schema({
         required: true
     },
 
-    article: {
+    article: [{
         type: Schema.Types.ObjectId, 
         ref: 'Article',
         required: true
-    }
+    }]
 });
 
 module.exports = mongoose.model('Product', productSchema, 'products');
