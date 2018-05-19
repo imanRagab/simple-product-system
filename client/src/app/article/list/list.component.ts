@@ -12,7 +12,7 @@ export class ListComponent implements OnInit {
   articles: Array<object>;
   articlesUrl = '/api/articles';
   constructor(
-    private api: ApiService
+    private api: ApiService,
   ) {
     this.articles = [];
    }
@@ -45,16 +45,18 @@ export class ListComponent implements OnInit {
 
     const endPoint = `${this.articlesUrl}/${id}`;
 
-    console.log(endPoint);
+    const ans = confirm('Are you sure you want to delete this Article?');
 
-    this.api.delete(endPoint).subscribe(
-      res => {
-        console.log(res);
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    if (ans) {
+      this.api.delete(endPoint).subscribe(
+        res => {
+          console.log(res);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+      window.location.reload();
+    }
   }
-
 }
