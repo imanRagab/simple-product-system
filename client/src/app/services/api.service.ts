@@ -11,6 +11,12 @@ export class ApiService {
 
   apiUrl = 'http://localhost:3000';
 
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+    })
+  };
+
   constructor(private http: HttpClient) { }
 
   // get data from api
@@ -19,4 +25,12 @@ export class ApiService {
 
     return this.http.get(this.apiUrl + endPoint);
   }
+
+  // post data to api
+
+  post(endPoint: string, data: object): Observable<any> {
+
+    return this.http.post(this.apiUrl, data, this.httpOptions);
+  }
+
 }
