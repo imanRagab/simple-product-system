@@ -42,6 +42,6 @@ exports.deleteProduct = function (req, res) {
 
   Product.findByIdAndRemove(req.params.id, function (err, product) {
     if (err) return res.status(500).send("There was a problem deleting the product. Error: " + err);
-    res.status(200).send("Product "+ product.name +" was deleted.");
+    res.status(200).send(product);
   });
 }

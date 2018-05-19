@@ -23,7 +23,6 @@ exports.showArticle = function (req, res) {
         }
         res.json(article);
      });
-
  }
 
 // list article products
@@ -76,7 +75,7 @@ exports.deleteArticle = function (req, res) {
 
     Article.findByIdAndRemove(req.params.id, function (err, article) {
       if (err) return res.status(500).send("There was a problem deleting the article. Error: " + err);
-      res.status(200).send("Article "+ article.name +" was deleted.");
+      res.status(200).send(article);
     });
   });
 }
