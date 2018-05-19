@@ -9,6 +9,7 @@ import { CreateComponent } from './create/create.component';
     CommonModule,
     RouterModule.forRoot([
       { path: 'articles', component: ListComponent},
+      { path: 'articles/create', component: CreateComponent},
   ])
   ],
   declarations: [ListComponent, CreateComponent]
