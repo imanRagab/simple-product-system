@@ -33,4 +33,11 @@ export class ApiService {
     return this.http.post(this.apiUrl + endPoint, data, this.httpOptions);
   }
 
+  // delete data from api
+
+  delete(endPoint: string): Observable<any> {
+
+    return this.http.delete(this.apiUrl + endPoint, this.httpOptions);
+  }
+
 }
