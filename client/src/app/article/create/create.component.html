@@ -1,3 +1,30 @@
-<p>
-  create works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <br><br>
+      <form name="createArticleForm" #createArticleForm="ngForm" (ngSubmit)="createArticle()">
+
+        <div class="form-group">
+            <label for="name">Number</label>
+            <input type="number" class="form-control" [(ngModel)]="articleForm.no" name="no" required>
+        </div>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" [(ngModel)]="articleForm.name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="name">Type</label>
+          <select class="form-control" [(ngModel)]="articleForm.type" name="type" required>
+              <option>Raw Material</option>
+              <option>Semi Processed</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-success">Save</button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</div>
