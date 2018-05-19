@@ -4,10 +4,17 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
+var cors = require('cors')
 require('dotenv').config()
 var db = require('../config/db');
 var articlesRouter = require('./routes/api/articles')
 var productsRouter = require('./routes/api/products')
+
+// cors config
+var corsOptions = {
+  origin: 'http://localhost:4200',
+  optionsSuccessStatus: 200
+}
 
 // connect to database
 var mongoose = db.connect();
@@ -21,11 +28,13 @@ app.set('view engine', 'ejs');
 
 // add app middlewares
 app.use(logger('dev'));
+app.use(cors(corsOptions))
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 // api routes
 app.use('/api/articles', articlesRouter)
