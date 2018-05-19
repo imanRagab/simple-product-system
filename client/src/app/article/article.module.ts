@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     RouterModule.forRoot([
-      { path: 'list', component: ListComponent},
+      { path: 'articles', component: ListComponent},
   ])
   ],
   declarations: [ListComponent]
