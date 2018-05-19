@@ -5,7 +5,7 @@
  */
 
 var app = require('./app/app');
-var debug = require('debug')('zappy:server');
+var debug = require('debug')(process.env.DEBUG);
 var http = require('http');
 
 /**
