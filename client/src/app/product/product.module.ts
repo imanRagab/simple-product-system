@@ -10,6 +10,8 @@ import { UpdateComponent } from './update/update.component';
     CommonModule,
     RouterModule.forRoot([
       { path: 'products', component: ListComponent},
+      { path: 'products/create', component: CreateComponent},
+      { path: 'products/update/:id', component: UpdateComponent},
   ])
   ],
   declarations: [ListComponent, CreateComponent, UpdateComponent]
