@@ -15,7 +15,11 @@
         <tr *ngFor="let product of products">
           <td>{{ product.no }}</td>
           <td>{{ product.name }}</td>
-          <td>{{ product.article }}</td>
+          <td>
+            <a *ngFor="let article of product.article">
+                {{ article.name }}<br>
+            </a>
+          </td>
           <td>
               <button class="btn btn-outline-secondary">Edit</button>&nbsp;
               <button class="btn btn-outline-danger" (click)="deleteProduct(product._id)">Delete</button>
