@@ -1,5 +1,5 @@
 <br><br>
-&nbsp;&nbsp;<button class="btn btn-success btn-lg">Create Product</button><br><br>
+&nbsp;&nbsp;<button class="btn btn-success btn-lg" routerLink="/products/create">Create Product</button><br><br>
 <table class="table table-bordered table-hover">
 
     <thead class="thead-light">
@@ -21,7 +21,7 @@
             </a>
           </td>
           <td>
-              <button class="btn btn-outline-secondary">Edit</button>&nbsp;
+              <button class="btn btn-outline-secondary" routerLink="/products/update/{{ product._id }}">Edit</button>&nbsp;
               <button class="btn btn-outline-danger" (click)="deleteProduct(product._id)">Delete</button>
           </td>
         </tr>
