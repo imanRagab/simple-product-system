@@ -12,7 +12,7 @@ import { UpdateComponent } from './update/update.component';
     FormsModule,
     RouterModule.forRoot([
       { path: 'articles', component: ListComponent},
-      { path: 'articles/create', component: CreateComponent},
+      { path: 'articles/create', component: CreateComponent}
   ])
   ],
   declarations: [ListComponent, CreateComponent, UpdateComponent]
