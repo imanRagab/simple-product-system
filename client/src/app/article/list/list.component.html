@@ -17,7 +17,7 @@
           <td>{{ article.name }}</td>
           <td>{{ article.type }}</td>
           <td>
-              <button class="btn btn-outline-secondary">Edit</button>&nbsp;
+              <button class="btn btn-outline-secondary" routerLink="/articles/update/{{article._id}}">Edit</button>&nbsp;
               <button class="btn btn-outline-danger" (click)="deleteArticle(article._id)">Delete</button>
           </td>
         </tr>
