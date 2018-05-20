@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class CreateComponent implements OnInit {
 
   productForm: object;
+  articlesList: Array<object>;
   constructor(
     private api: ApiService,
     private router: Router
@@ -19,6 +20,7 @@ export class CreateComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getArticles();
   }
 
   // function to save product to api
@@ -35,6 +37,21 @@ export class CreateComponent implements OnInit {
     );
     window.location.reload();
     this.router.navigate(['products']);
+  }
+
+  // get list of articles from api
+
+  getArticles(): void {
+
+    this.api.get('/api/articles').subscribe(
+      res => {
+        this.articlesList = res;
+      },
+      err => {
+        console.log(err);
+      }
+    );
+
   }
 
 }
