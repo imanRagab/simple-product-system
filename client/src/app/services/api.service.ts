@@ -40,4 +40,11 @@ export class ApiService {
     return this.http.delete(this.apiUrl + endPoint, this.httpOptions);
   }
 
+  // update data in api
+
+  put(endPoint: string, data: object): Observable<any> {
+
+    return this.http.put( this.put + endPoint, this.httpOptions);
+  }
+
 }
