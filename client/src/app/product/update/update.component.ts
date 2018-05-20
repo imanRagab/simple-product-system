@@ -39,4 +39,20 @@ export class UpdateComponent implements OnInit {
     );
   }
 
+  // update product
+
+  updateProduct(): void {
+
+    this.api.put(`/api/products/${this.id}`, this.productForm).subscribe(
+      res => {
+        console.log(res);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+    window.location.reload();
+    this.router.navigate(['products']);
+  }
+
 }
