@@ -9,7 +9,7 @@ exports.listProducts = function(req, res) {
       res.send(err);
     }
     res.json(products);
-  });
+  }).populate('article');
 }
 
 // show product
