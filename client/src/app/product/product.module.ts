@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ListComponent } from './list/list.component';
 import { RouterModule } from '@angular/router';
 import { CreateComponent } from './create/create.component';
+import { UpdateComponent } from './update/update.component';
 
 @NgModule({
   imports: [
@@ -11,6 +12,6 @@ import { CreateComponent } from './create/create.component';
       { path: 'products', component: ListComponent},
   ])
   ],
-  declarations: [ListComponent, CreateComponent]
+  declarations: [ListComponent, CreateComponent, UpdateComponent]
 })
 export class ProductModule { }
