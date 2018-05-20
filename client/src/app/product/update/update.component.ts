@@ -12,6 +12,7 @@ export class UpdateComponent implements OnInit {
 
   id: string;
   productForm: object;
+  articlesList: Array<object>;
   constructor(
     private route: ActivatedRoute,
     private api: ApiService,
@@ -23,6 +24,7 @@ export class UpdateComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getArticles();
   }
 
    // get product data
@@ -53,6 +55,21 @@ export class UpdateComponent implements OnInit {
     );
     window.location.reload();
     this.router.navigate(['products']);
+  }
+
+  // get list of articles from api
+
+  getArticles(): void {
+
+    this.api.get('/api/articles').subscribe(
+      res => {
+        this.articlesList = res;
+      },
+      err => {
+        console.log(err);
+      }
+    );
+
   }
 
 }
