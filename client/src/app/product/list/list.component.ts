@@ -37,4 +37,25 @@ export class ListComponent implements OnInit {
     );
   }
 
+  // delete product
+
+  deleteProduct(id: number): void {
+
+    const endPoint = `${this.productsUrl}/${id}`;
+
+    const ans = confirm('Are you sure you want to delete this Product?');
+
+    if (ans) {
+      this.api.delete(endPoint).subscribe(
+        res => {
+          console.log(res);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+      window.location.reload();
+    }
+  }
+
 }
