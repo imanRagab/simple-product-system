@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../../services/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-update',
@@ -13,7 +14,8 @@ export class UpdateComponent implements OnInit {
   articleForm: object;
   constructor(
     private route: ActivatedRoute,
-    private api: ApiService
+    private api: ApiService,
+    private router: Router
   ) {
     this.id = this.route.snapshot.params.id;
     this.getArticle();
@@ -33,6 +35,22 @@ export class UpdateComponent implements OnInit {
         console.log(err);
       }
     );
+  }
 
+
+  // update article
+
+  updateArticle(): void {
+
+    this.api.put(`/api/articles/${this.id}`, this.articleForm).subscribe(
+      res => {
+        console.log(res);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+    window.location.reload();
+    this.router.navigate(['articles']);
   }
 }

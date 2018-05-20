@@ -25,7 +25,6 @@ export class CreateComponent implements OnInit {
 
   createArticle(): void {
 
-    console.log(this.articleForm);
     this.api.post('/api/articles', this.articleForm).subscribe(
       res => {
         console.log(res);
