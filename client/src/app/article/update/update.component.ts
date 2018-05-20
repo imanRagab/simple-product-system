@@ -17,6 +17,7 @@ export class UpdateComponent implements OnInit {
     private api: ApiService,
     private router: Router
   ) {
+    this.articleForm = {};
     this.id = this.route.snapshot.params.id;
     this.getArticle();
   }

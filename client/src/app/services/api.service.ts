@@ -44,7 +44,7 @@ export class ApiService {
 
   put(endPoint: string, data: object): Observable<any> {
 
-    return this.http.put( this.put + endPoint, this.httpOptions);
+    return this.http.put( this.apiUrl + endPoint, data, this.httpOptions);
   }
 
 }
