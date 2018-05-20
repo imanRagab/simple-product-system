@@ -30,7 +30,6 @@ export class ListComponent implements OnInit {
 
     this.api.get(endPoint).subscribe(
       res => {
-        console.log(res);
         this.articles = res;
       },
       err => {
