@@ -4,12 +4,36 @@ var Product = require('../../models/product');
 
 exports.listProducts = function(req, res) {
   
-  Product.find({}, function(err, products) {
-    if (err){
-      res.send(err);
-    }
-    res.json(products);
-  }).populate('article');
+  if(req.query.article){ // filter by article
+    Product.find({article: req.query.article}, function(err, products) {
+      if (err){
+        res.send(err);
+      }
+      if(req.query.name){ // filter by name
+        products = products.filter(
+          product => {
+            return product.name.includes(req.query.name);
+          }
+        );
+      }
+      res.json(products);
+    }).populate('article');
+  }
+  else{
+    Product.find({}, function(err, products) {
+      if (err){
+        res.send(err);
+      }
+      if(req.query.name){ // filter by name
+        products = products.filter(
+          product => {
+            return product.name.includes(req.query.name);
+          }
+        );
+      }
+      res.json(products);
+    }).populate('article');
+  }
 }
 
 // show product

@@ -5,12 +5,12 @@ var Product = require('../../models/product');
 
 exports.listArticles = function(req, res) {
 
-  if(req.query.type){
+  if(req.query.type){ // filter by type
     Article.find({type: req.query.type}, function(err, articles) {
       if (err){
         res.send(err);
       }
-      if(req.query.name){
+      if(req.query.name){ // filter by name
         articles = articles.filter(
           article => {
             return article.name.includes(req.query.name);
@@ -25,7 +25,7 @@ exports.listArticles = function(req, res) {
       if (err){
         res.send(err);
       }
-      if(req.query.name){
+      if(req.query.name){ //filter by name
         articles = articles.filter(
           article => {
             return article.name.includes(req.query.name);
