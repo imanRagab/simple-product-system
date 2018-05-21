@@ -11,10 +11,12 @@ export class ListComponent implements OnInit {
 
   articles: Array<object>;
   articlesUrl = '/api/articles';
+  filterData: object;
   constructor(
     private api: ApiService,
   ) {
     this.articles = [];
+    this.filterData = {};
    }
 
   ngOnInit() {
@@ -57,5 +59,26 @@ export class ListComponent implements OnInit {
       );
       window.location.reload();
     }
+  }
+
+  // filter articles
+  filterArticles(): void {
+
+    let endPoint = this.articlesUrl + '?';
+    if (this.filterData['name']) {
+      endPoint += `name=${this.filterData['name']}&`;
+    }
+    if (this.filterData['type']) {
+      endPoint += `type=${this.filterData['type']}`;
+    }
+
+    this.api.get(endPoint).subscribe(
+      res => {
+        this.articles = res;
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 }
