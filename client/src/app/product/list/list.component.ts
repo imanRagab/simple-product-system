@@ -10,15 +10,16 @@ export class ListComponent implements OnInit {
 
   productsUrl = '/api/products';
   products: Array<object>;
+  filterData: object;
   constructor(
     private api: ApiService,
   ) {
     this.products = [];
+    this.filterData = {};
    }
 
   ngOnInit() {
     this.getProducts();
-
   }
 
   // get list of products from api
@@ -56,6 +57,28 @@ export class ListComponent implements OnInit {
       );
       window.location.reload();
     }
+  }
+
+  // filter products
+
+  filterProducts(): void {
+
+    let endPoint = this.productsUrl + '?';
+    if (this.filterData['name']) {
+      endPoint += `name=${this.filterData['name']}&`;
+    }
+    if (this.filterData['article']) {
+      endPoint += `article=${this.filterData['article']}`;
+    }
+
+    this.api.get(endPoint).subscribe(
+      res => {
+        this.products = res;
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
 }
