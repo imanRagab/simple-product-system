@@ -4,12 +4,37 @@ var Product = require('../../models/product');
 // list all articles
 
 exports.listArticles = function(req, res) {
-  Article.find({}, function(err, articles) {
-    if (err){
-      res.send(err);
-    }
-    res.json(articles);
-  });
+
+  if(req.query.type){
+    Article.find({type: req.query.type}, function(err, articles) {
+      if (err){
+        res.send(err);
+      }
+      if(req.query.name){
+        articles = articles.filter(
+          article => {
+            return article.name.includes(req.query.name);
+          }
+        );
+      }
+      res.json(articles);
+    });
+  }
+  else{
+    Article.find({}, function(err, articles) {
+      if (err){
+        res.send(err);
+      }
+      if(req.query.name){
+        articles = articles.filter(
+          article => {
+            return article.name.includes(req.query.name);
+          }
+        );
+      }
+      res.json(articles);
+    });
+  }
 }
 
 // show article
