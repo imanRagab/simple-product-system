@@ -11,15 +11,18 @@ export class ListComponent implements OnInit {
   productsUrl = '/api/products';
   products: Array<object>;
   filterData: object;
+  articlesList: Array<object>;
   constructor(
     private api: ApiService,
   ) {
     this.products = [];
     this.filterData = {};
+    this.articlesList = [];
    }
 
   ngOnInit() {
     this.getProducts();
+    this.getArticles();
   }
 
   // get list of products from api
@@ -79,6 +82,22 @@ export class ListComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  // get list of articles from api
+
+  getArticles(): void {
+
+    console.log(this.articlesList);
+    this.api.get('/api/articles').subscribe(
+      res => {
+        this.articlesList = res;
+      },
+      err => {
+        console.log(err);
+      }
+    );
+
   }
 
 }
