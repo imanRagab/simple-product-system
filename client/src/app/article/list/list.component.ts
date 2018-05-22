@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import {Observable} from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -14,6 +15,7 @@ export class ListComponent implements OnInit {
   filterData: object;
   constructor(
     private api: ApiService,
+    private router: Router
   ) {
     this.articles = [];
     this.filterData = {};
@@ -51,13 +53,13 @@ export class ListComponent implements OnInit {
     if (ans) {
       this.api.delete(endPoint).subscribe(
         res => {
-          console.log(res);
+          alert("Article: " + res.name + " deleted successfully");
+          this.router.navigate(['articles']);
         },
         error => {
-          console.log(error);
+          alert("Error deleting this article! " + error.error.message);
         }
       );
-      window.location.reload();
     }
   }
 

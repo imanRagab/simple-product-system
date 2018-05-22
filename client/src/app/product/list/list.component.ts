@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -14,6 +15,7 @@ export class ListComponent implements OnInit {
   articlesList: Array<object>;
   constructor(
     private api: ApiService,
+    private router: Router
   ) {
     this.products = [];
     this.filterData = {};
@@ -52,13 +54,13 @@ export class ListComponent implements OnInit {
     if (ans) {
       this.api.delete(endPoint).subscribe(
         res => {
-          console.log(res);
+          alert("Product: " + res.name + " deleted successfully");
+          this.router.navigate(['products']);
         },
         error => {
-          console.log(error);
+          alert("There was an error deleting the product");
         }
       );
-      window.location.reload();
     }
   }
 
