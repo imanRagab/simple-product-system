@@ -45,13 +45,11 @@ export class UpdateComponent implements OnInit {
 
     this.api.put(`/api/articles/${this.id}`, this.articleForm).subscribe(
       res => {
-        console.log(res);
+        this.router.navigate(['articles']);
       },
       error => {
-        console.log(error);
+        alert("Can't update the article please make sure all fields are filled")
       }
     );
-    window.location.reload();
-    this.router.navigate(['articles']);
   }
 }

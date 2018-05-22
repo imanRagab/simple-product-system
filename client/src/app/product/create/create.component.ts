@@ -29,14 +29,12 @@ export class CreateComponent implements OnInit {
 
     this.api.post('/api/products', this.productForm).subscribe(
       res => {
-        console.log(res);
+        this.router.navigate(['products']);
       },
       error => {
-        console.log(error);
+        alert("Can't create product please make sure all fields are filled")
       }
     );
-    window.location.reload();
-    this.router.navigate(['products']);
   }
 
   // get list of articles from api

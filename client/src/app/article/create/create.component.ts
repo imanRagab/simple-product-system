@@ -27,14 +27,12 @@ export class CreateComponent implements OnInit {
 
     this.api.post('/api/articles', this.articleForm).subscribe(
       res => {
-        console.log(res);
+        this.router.navigate(['articles']);
       },
       error => {
-        console.log(error);
+        alert("Can't create article please make sure all fields are filled")
       }
     );
-    window.location.reload();
-    this.router.navigate(['articles']);
   }
 
 }
