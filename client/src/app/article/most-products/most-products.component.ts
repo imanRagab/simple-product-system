@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-most-products',
@@ -7,9 +8,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MostProductsComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  articles: Array<object>;
+  articlesUrl = '/api/articles';
+  constructor(
+    private api: ApiService,
+  ) { 
+    this.articles = [];
   }
 
+  ngOnInit() {
+    this.getArticles();
+  }
+
+    // get list of articles from api
+
+    getArticles(): void {
+
+      const endPoint = this.articlesUrl;
+  
+      this.api.get(endPoint).subscribe(
+        res => {
+          this.articles = res;
+        },
+        err => {
+          console.log(err);
+        }
+      );
+    }
 }
