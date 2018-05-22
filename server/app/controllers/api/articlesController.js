@@ -50,15 +50,15 @@ exports.showArticle = function (req, res) {
      });
  }
 
-// list article products
+// count article products
 
-exports.listProducts = function(req, res) {
+exports.countProducts = function(req, res) {
 
-  Product.find({ article: req.params.id }, function(err, articles) {
+  Product.count({ article: req.params.id }, function(err, count) {
     if (err){
       res.send(err);
     }
-    res.json(articles);
+    res.json(count);
   });
 }
 
