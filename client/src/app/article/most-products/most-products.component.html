@@ -2,7 +2,7 @@
     <div class="row">
       <div class="col-md-6">
         <br><br>
-        <form (ngSubmit)="mostProductsArticle()">
+        <form (ngSubmit)="getMostProductsArticle()">
           <div class="form-group">
             <label for="name">Articles</label>
             <select class="form-control" [(ngModel)]="selectedArticles" name="article" multiple required (change)="getProductsCount()">
