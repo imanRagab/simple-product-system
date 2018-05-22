@@ -5,17 +5,16 @@ var Product = require('../../models/product');
 
 exports.listArticles = function(req, res) {
 
-  if(req.query.type){ // filter by type
-    Article.find({type: req.query.type}, function(err, articles) {
+  if(req.query.type ||  req.query.name){
+    Article.find(
+      { $or:[
+        {type: req.query.type},
+        {name: new RegExp(req.query.name, "i")}
+      ]
+      },
+      function(err, articles) {
       if (err){
         res.send(err);
-      }
-      if(req.query.name){ // filter by name
-        articles = articles.filter(
-          article => {
-            return article.name.includes(req.query.name);
-          }
-        );
       }
       res.json(articles);
     });
@@ -24,13 +23,6 @@ exports.listArticles = function(req, res) {
     Article.find({}, function(err, articles) {
       if (err){
         res.send(err);
-      }
-      if(req.query.name){ //filter by name
-        articles = articles.filter(
-          article => {
-            return article.name.includes(req.query.name);
-          }
-        );
       }
       res.json(articles);
     });
