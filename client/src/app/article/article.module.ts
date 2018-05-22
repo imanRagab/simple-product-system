@@ -5,6 +5,7 @@ import { ListComponent } from './list/list.component';
 import { RouterModule } from '@angular/router';
 import { CreateComponent } from './create/create.component';
 import { UpdateComponent } from './update/update.component';
+import { MostProductsComponent } from './most-products/most-products.component';
 
 @NgModule({
   imports: [
@@ -16,6 +17,6 @@ import { UpdateComponent } from './update/update.component';
       { path: 'articles/update/:id', component: UpdateComponent},
   ])
   ],
-  declarations: [ListComponent, CreateComponent, UpdateComponent]
+  declarations: [ListComponent, CreateComponent, UpdateComponent, MostProductsComponent]
 })
 export class ArticleModule { }
