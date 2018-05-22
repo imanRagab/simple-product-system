@@ -1,3 +1,25 @@
-<p>
-  most-products works!
-</p>
+<div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <br><br>
+        <form (ngSubmit)="mostProductsArticle()">
+          <div class="form-group">
+            <label for="name">Articles</label>
+            <select class="form-control" [(ngModel)]="selectedArticles" name="article" multiple required (change)="getProductsCount()">
+                <option value="">-- Select articles to find article with most products --</option>
+                <option *ngFor="let article of articlesList" value="{{ article._id }}">
+                  {{ article.name }}
+                </option>
+            </select>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-success">Find</button>
+          </div>  
+        </form>
+      </div>
+    </div>
+
+    <div class="jumbotron">
+        <p class="lead">{{ mostProductsArticle }}</p>
+      </div>
+  </div>
