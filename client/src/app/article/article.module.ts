@@ -15,6 +15,7 @@ import { MostProductsComponent } from './most-products/most-products.component';
       { path: 'articles', component: ListComponent},
       { path: 'articles/create', component: CreateComponent},
       { path: 'articles/update/:id', component: UpdateComponent},
+      { path: 'articles/mostProducts', component: MostProductsComponent},
   ])
   ],
   declarations: [ListComponent, CreateComponent, UpdateComponent, MostProductsComponent]
