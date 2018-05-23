@@ -11,14 +11,14 @@ export class MostProductsComponent implements OnInit {
   articles: Array<object>;
   articlesUrl = '/api/articles';
   selectedArticles: Array<any>;
-  mostProductsArticle: string;
+  mostProductsArticle: object;
   productsCount: Array<object>;
   constructor(
     private api: ApiService,
   ) { 
     this.articles = [];
     this.selectedArticles = [];
-    this.mostProductsArticle = "";
+    this.mostProductsArticle = {};
   }
 
   ngOnInit() {
@@ -43,25 +43,21 @@ export class MostProductsComponent implements OnInit {
 
     // count pproducts of selected items
 
-    getProductsCount(): void {
-
-      for(let article in this.selectedArticles){
-        this.api.get(this.articlesUrl + `/${article}/products`).subscribe(
-          res => {
-            this.productsCount.push({
-              "article": article,
-              "count": res
-            });
-          }
-        );
-      }
-    }
-
-    // get article with maximum products
-
     getMostProductsArticle(): void {
 
+      const endPoint = this.articlesUrl + "/products";
+  
+      const articles = {"articles": this.selectedArticles};
+
+      console.log(articles);
+      this.api.post(endPoint, articles).subscribe(
+        res => {
+          this.mostProductsArticle = res[0];
+          console.log(this.mostProductsArticle);
+        },
+        err => {
+          console.log(err);
+        }
+      );      
     }
-
-
 }

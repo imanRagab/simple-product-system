@@ -20,6 +20,6 @@
     </div>
 
     <div class="jumbotron">
-        <p class="lead">Article with most products is: {{ mostProductsArticle.name }} and has {{ mostProductsArticle.max }} products</p>
+        <p class="lead" *ngIf="mostProductsArticle.name">Article with most products is: {{ mostProductsArticle.name }} and has {{ mostProductsArticle.count }} products</p>
       </div>
   </div>
