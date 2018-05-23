@@ -1,5 +1,7 @@
 var Article = require('../../models/article');
 var Product = require('../../models/product');
+var mongoose = require('../../../config/db').mongoose;
+var Schema = mongoose.Schema;
 
 // list all articles
 
@@ -42,16 +44,41 @@ exports.showArticle = function (req, res) {
      });
  }
 
-// count article products
+// get max products article
 
-exports.countProducts = function(req, res) {
+exports.getMaxProducts = function(req, res) {
 
-  Product.count({ article: req.params.id }, function(err, count) {
+  var articles = req.body.articles;
+  Article.aggregate([
+    {$match: { _id: { 
+      $in: articles.map(function(id){ return new mongoose.Types.ObjectId(id); })
+    }}},
+    {
+      $lookup: {
+          from: "products",
+          localField: "_id",
+          foreignField: "article",
+          as: "products"
+      }
+    },
+    {
+      $project: {
+          name: 1,
+          count: { $size: "$products" }
+      }
+    },
+    {
+     $sort : {count : -1}
+    }, 
+    {
+      $limit : 1 
+    }
+ ]).exec(function(err, results){
     if (err){
       res.send(err);
     }
-    res.json(count);
-  });
+    res.json(results);
+ })
 }
 
 // create article

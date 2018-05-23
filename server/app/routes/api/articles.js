@@ -8,8 +8,8 @@ router.get('/', articlesController.listArticles);
 /* GET article show. */
 router.get('/:id', articlesController.showArticle);
 
-/* GET count article products. */
-router.get('/:id/products', articlesController.countProducts);
+/* POST count article products. */
+router.post('/products', articlesController.getMaxProducts);
 
 /* POST article create. */
 router.post('/', articlesController.createArticle);
