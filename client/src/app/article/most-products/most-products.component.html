@@ -5,7 +5,7 @@
         <form (ngSubmit)="getMostProductsArticle()">
           <div class="form-group">
             <label for="name">Articles</label>
-            <select class="form-control" [(ngModel)]="selectedArticles" name="article" multiple required (change)="getProductsCount()">
+            <select class="form-control" [(ngModel)]="selectedArticles" name="article" multiple required>
                 <option value="">-- Select articles to find article with most products --</option>
                 <option *ngFor="let article of articles" value="{{ article._id }}">
                   {{ article.name }}
@@ -20,6 +20,6 @@
     </div>
 
     <div class="jumbotron">
-        <p class="lead">{{ mostProductsArticle }}</p>
+        <p class="lead">Article with most products is: {{ mostProductsArticle.name }} and has {{ mostProductsArticle.max }} products</p>
       </div>
   </div>
